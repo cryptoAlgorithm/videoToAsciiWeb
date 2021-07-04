@@ -1,0 +1,110 @@
+button {
+    padding: .6rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+
+    background-color: transparent;
+    color: var(--theme);
+
+    text-transform: uppercase;
+    letter-spacing: .07rem;
+    font-size: .88em;
+    font-weight: 400;
+    user-select: none;
+    font-family: inherit;
+
+    transition: box-shadow .2s ease-in-out, background-color .25s ease-in-out, border .2s ease-in-out;
+}
+
+button.icon {
+    display: flex;
+    width: min-content;
+    padding: .75rem;
+
+    border-radius: 50%;
+    --ripple-fill: #fff;
+}
+button.icon.smaller {
+    padding: .1875rem;
+}
+button.icon.smaller > svg, button.icon.smaller > img {
+    width: 18px;
+    height: 18px;
+}
+button.icon.small > svg, button.icon.small > img {
+    width: 20px;
+    height: 20px;
+}
+button.icon.large > svg, button.icon.large > img {
+    width: 35px;
+    height: 35px;
+}
+
+button.icon:hover {
+    background-color: #ffffff14;
+}
+
+button.outlined, button.filled {
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+button.filled {
+    background-color: var(--theme);
+    color: #fefefe;
+    --ripple-fill: #fff;
+}
+button.outlined {
+    border: 1px solid #1976d280;
+}
+button.outlined, button {
+    --ripple-fill: var(--theme);
+}
+
+button.filled:hover {
+    background-color: #115293;
+}
+button.outlined:hover {
+    border: 1px solid var(--theme);
+    background-color: transparent;
+}
+button:hover {
+    background-color: var(--lightest-theme);
+}
+
+button.outlined:active, button.filled:active {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+/* ====== End buttons ====== */
+
+/* The actual goodness is below
+   I've commented the most important stuff so that you can follow along
+*/
+
+.ripple {
+    position: relative; /* So that children can be positioned absolute to this parent */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.ripple.ripple-unbounded {
+    overflow: visible;
+}
+
+.ripple > div.ripple__container {
+    display: block; /* Force block positioning */
+    opacity: var(--ripple-opacity, .3); /* You can see thru the ripple */
+    border-radius: 50%; /* The ripple must be a circle */
+    position: absolute; /* We can position it absolute to its parent */
+    z-index: 10;
+
+    pointer-events: none;
+
+    width: 1px;
+    height: 1px;
+
+    transform: scale(0);
+    transition: transform .55s cubic-bezier(0.4, 0, 0.2, 1), opacity .55s ease-in-out;
+
+    background-color: var(--ripple-fill, #fff);
+}

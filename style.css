@@ -1,0 +1,158 @@
+@font-face {
+    src: url("./font/MesloLGS NF Regular.ttf");
+    font-family: 'MesloLGS NF';
+    font-weight: 400;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    --theme: #1976d2;
+    background-color: #000;
+    color: #eee;
+    font-family: 'MesloLGS NF', "Courier New", monospace;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+main {
+    padding: 1rem;
+    border-radius: 7px;
+    background-color: #333;
+}
+
+#player {
+    display: none;
+}
+
+#viewport {
+    border-radius: 4px;
+}
+
+input[type=file], #vid, #cvs {
+    display: none;
+}
+
+
+/* Overlaid UI elements */
+div.title, div.controls {
+    position: fixed;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease-in-out;
+}
+
+div.title {
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(117, 117, 117, 0.45);
+    backdrop-filter: blur(24px);
+}
+div.title > p {
+    margin: .3rem .5rem;
+    display: block;
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    color: #bbb;
+}
+
+div.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
+    width: 450px;
+    border-radius: 12px;
+    background-color: #00000055;
+    backdrop-filter: brightness(200%) blur(24px);
+}
+
+div.controls > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .15rem .75rem;
+}
+
+div.controls button {
+    padding: .5rem;
+}
+div.controls button.p-ctrl {
+    padding: 0;
+    margin: 0 .25rem;
+}
+div.controls button.p-ctrl > img {
+    width: 48px;
+    height: 48px;
+}
+div.controls input[type=range] {
+    flex: 1;
+    margin: 0 .75rem;
+}
+
+body.active div.controls, body.active div.title {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Custom slider style */
+input[type=range]{
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 3px;
+    background: #ffffff55;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 4px;
+    border-radius: 2px;
+    background: #eee;
+    margin-top: -7px;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Basic text field styles */
+input[type=text] {
+    border: 2px solid #1976d2;
+    border-radius: 4px;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    padding: .2rem;
+    transition: box-shadow .2s ease-in-out, border-color .25s ease-in-out;
+}
+input[type=text]:invalid {
+    border: 2px solid red;
+}
+input[type=text]:focus {
+    box-shadow: 0 0 1px 3px #1565c0aa;
+}

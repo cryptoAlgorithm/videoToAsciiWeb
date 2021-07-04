@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video To ASCII Web</title>
+
+    <link rel="stylesheet" href="lib/ripple.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="render.js" defer></script>
+    <script src="lib/ripple.js" defer></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="player">
+    <div class="title"><p id="title">Lol</p></div>
+    <canvas id="viewport"></canvas>
+    <div class="controls">
+        <div>
+            <button class="icon ripple" id="rew"><img src="img/fast_rewind_white_24dp.svg" alt="Rewind"></button>
+            <button class="icon ripple p-ctrl" id="ppw"><img src="img/pause_white_24dp.svg" alt="Play/pause"></button>
+            <button class="icon ripple" id="ffw"><img src="img/fast_forward_white_24dp.svg" alt="Fast-forward"></button>
+        </div>
+        <div>
+            <small id="elapsedTime">--:--</small>
+            <input type="range" min="0" max="1" value="0" step="any" aria-label="" id="pSlider">
+            <small id="totalTime">--:--</small>
+        </div>
+    </div>
+</div>
+<video id="vid"></video>
+<canvas id="cvs"></canvas>
+<main id="prompt">
+    <h2 style="margin-bottom: .25rem; margin-top: 0">Video to ASCII</h2>
+    <small style="display: block; margin-bottom: 1rem">Plays a video as ASCII characters in your browser</small>
+    <label for="fInput">Choose a video:</label>
+    <input type="file" id="fInput">
+    <button class="ripple filled" id="pBtn">Open file picker</button>
+    <label style="display: block; margin-top: .75rem;">
+        Or enter a YouTube URL:
+        <input type="text" minlength="30" id="vidID">
+    </label>
+</main>
+</body>
+</html>
